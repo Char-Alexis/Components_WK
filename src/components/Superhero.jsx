@@ -1,46 +1,51 @@
 import React from 'react';
 
 
-function Superhero(props){
+const Superhero=(props) =>{
     return(
       
-    <table>
+    
+      <table>
       <thead>
-        <th>
-          {/* <td>Id</td> */}
-          <td>Name</td>
-          <td>Primary Ability</td>
-          <td>Secondary Ability</td>
-
-        </th>
+      <td>Name</td>
+      <td>Primary Ability</td>
+      <td>Secondary Ability</td>
+      
+      
+      
+      
       </thead>
       <tbody>
-          {
-        
-            props.superheroes.map(hero => <li> {hero} </li>)
-
-          }
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>5</td>
-          <td>6</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        {/* {props.heroes.map(hero => <li> {hero} </li>)} */}
+      
+      
+      <tr>
+        <td>
+          Batman
+        </td>
+        <td>
+          
+        </td>
+        <td>
+         
+        </td>
+      </tr>
+      
       </tbody>
-    </table>
-    )
+      </table>
+      
+      );
+    
+}
+    export default Superhero;
+    
 
-};
-
-
-export default Superhero
-
+      // <React.Fragment>
+      //   <h2>Superhero List</h2>
+      //   <hr/>
+      //   <ul>
+      //       {props.heroes.map((hero, index) => {
+      //         return <li key={index} >{hero} </li>
+      //       })}
+      //   </ul>
+      // </React.Fragment>

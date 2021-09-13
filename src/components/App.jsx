@@ -1,11 +1,12 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import AlertUser from './AlertUser';
 // import './App.css'
 import DisplayName from './DisplayName';
 import NameList from './NameList';
 import Superhero from './Superhero';
-
-// Display name
+import SuperheroCreateForm from './SuperheroCreateForm'
+// import DisplayJokes from './DisplayJokes';
 
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
             firstName: 'Reggie',
             lastName: 'White',
             names: ['Mike', 'Nevin', 'Aaron', 'Tory', 'Kelly'],
+            jokes: [],
             superheroes: [
                 {
                     superheroId: 1,
@@ -33,15 +35,47 @@ class App extends Component {
                     name: 'Spiderman',
                     primaryAbility: 'Spider senses',
                     secondarAbility: 'Shoots web'
-                }
+                },
+            
             ]
 
         };
 
     }
     
-    popUp(){
-        alert('devcode')
+    popUp = ()=> {
+        alert('devcodecamp')
+    }
+
+    addedHero = (heroToAdd) => {
+        let tempHero= this.state.superheroes;
+        tempHero.push(heroToAdd);
+        this.setState({
+            superheroes: tempHero
+        });
+    }
+
+    displayJokes = ()=> {
+        console.log('Jokes here')
+    }
+
+    componentDidMount(){
+        this.displayJokes();
+    }
+    
+    async displayJokes(){
+        try{
+        let response = await axios.get('https://v2.jokeapi.dev/joke/Programming?type=twopart&amount=5')
+        
+        console.log(response.data)
+        }
+        catch(ex){
+
+            console.log('Error')
+        }
+        // this.setState({
+        //     jokes:response.data
+        // });
     }
 
     render(){
@@ -50,7 +84,10 @@ class App extends Component {
                 <DisplayName firstName={this.state.firstName} lastName= {this.state.lastName} />
                 <NameList names= {this.state.names} />
                 <AlertUser popUp= {this.popUp} />
-                <Superhero superheroes= {this.state.superheroes} />
+                <Superhero heroes= {this.state.superheroes}/>
+                <SuperheroCreateForm addedHero={this.addedHero}/>
+                <h1>{this.state.jokes}</h1>
+
             </div>
         )
     }
